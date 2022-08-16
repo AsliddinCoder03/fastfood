@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'users',
     'allauth',
+    'django_seed',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
