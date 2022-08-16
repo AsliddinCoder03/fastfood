@@ -50,7 +50,11 @@ urlpatterns = [
 
     path('session-get/', getsession), 
     path('session-set/', setsession),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('user/', include('users.urls')),
+    path('accounts/', include('allauth.urls')),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 
 # a = {'cdds': 'cda','cdds': 'cda','cdds': 'cda' }[]

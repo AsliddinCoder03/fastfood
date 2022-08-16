@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container mt-5 pt-5">
+        <form method="post">
+            {% csrf_token %}
+            {% if error %}
+                <label style="color: red;">{{error}}</label>
+                <input maxlength="7" class ="form_control" name="code">
+                <button type="submit" class="btn btn-succcess">Submit</button>
+            {% else %}    
+                <input maxlength="7" class ="form_control" name="code">
+                <button type="submit" class="btn btn-succcess">Submit</button>
+            {% endif %}
+    </div>
+</body>
+</html>

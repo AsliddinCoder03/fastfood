@@ -19,6 +19,7 @@ class FoodViewSet(viewsets.ModelViewSet):
     
     
 class AboutViewSet(viewsets.ModelViewSet):
+    
     queryset = About.objects.all()
     serializer_class = AboutSerializer
     
@@ -49,34 +50,20 @@ class BookTableViewSet(viewsets.ModelViewSet):
 
 class FoodCreateView(generics.CreateAPIView):
 
-    serializer_class = BookTableSerializer
-
-    def post(self,request, *args, **kwargs):
-        return super().post(request,*args, **kwargs) 
+    serializer_class = FoodSerializer 
 
 class FoodUpdateView(generics.UpdateAPIView):
 
-    serializer_class = BookTableSerializer
+    serializer_class = FoodSerializer
 
     queryset = Food.objects.all()
     lookup_field = 'id'
 
-    def get_object(self):
-        return Food.objects.get(pk=self.request.data.get('id'))
-
-    def put(self,request, *args, **kwargs):
-        return super().put(request,*args, **kwargs) 
 
 class FoodDestroyView(generics.DestroyAPIView):
 
-    serializer_class = BookTableSerializer
+    serializer_class = FoodSerializer
 
     queryset = Food.objects.all()
     lookup_field = 'id'
-
-    def get_object(self):
-        return Food.objects.get(pk=self.request.data.get('id'))
-
-    def delete(self,request, *args, **kwargs):
-        return super().delete(request,*args, **kwargs) 
 

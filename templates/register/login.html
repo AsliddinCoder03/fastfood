@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>.add-group-form input{
+        padding: 5px 10px;
+        border-radius: 10px;
+        outline: none;
+        border: 1px solid lightgray;
+        width: 33.3%;
+    }
+    .add-group-form select{
+        padding: 5px 10px;
+        border-radius: 10px;
+        outline: none;
+        border: 1px solid lightgray;
+        width: 33.3%;
+    }
+    .add-group-form label{
+        width: 66.7%;
+    }
+    .add-group-form input:focus{
+        outline: 5px solid rgba(99, 99, 248, 0.486);
+    }
+
+    .add-group-form section:focus{
+        outline: 5px solid rgba(99, 99, 248, 0.486);
+    }
+    .add-group-form{
+        margin: 50px;
+        padding: 10px;
+    }
+</style>
+</head>
+<body>
+    <div class="add-group-form" >
+        <form method="post">{% csrf_token %}
+            {% for f in form %}
+                <p><label>{{f.label}}:&#160;&#160;&#160;</label>{{f}}</p>
+                <div class="form-error">{{f.errors}}</div>
+            {% endfor %}    
+                <input class="btn btn-submit" type="submit" value="Get started">
+                <a href="{% url 'register' %}"><input type="button" class="btn btn-rotate" id="btn-login" value="Registration"></a>
+        </form>
+    </div>
+</body>
+</html>

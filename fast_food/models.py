@@ -1,4 +1,11 @@
+from tkinter import CASCADE
 from django.db import models
+from django.contrib.auth.models import User
+
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    email_token= models.CharField(max_length=200)
+    is_verified = models.BooleanField(default=False)
 
 class Type(models.Model):
     name = models.CharField(max_length=30)
@@ -35,17 +42,19 @@ class About(models.Model):
 
 class BookTable(models.Model):
     name = models.TextField(max_length=20)
-    phone_number = models.IntegerField(default=0)
+    phone_number = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     person = models.IntegerField(default=0)
-    birthday = models.DateField(auto_now_add=True)
+    birthday = models.DateField()
 
     
     class Meta:
-        ordering = ["-name"]
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
+
+
 
 
 
